@@ -1,0 +1,19 @@
+{
+  "name": "linked-list",
+  "version": "1.0.0",
+  "description": "Just Linked List Example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psenger/linked-list.git"
+  },
+  "author": "Philip A Senger <philip.a.senger@cngrgroup.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psenger/linked-list/issues"
+  },
+  "homepage": "https://github.com/psenger/linked-list#readme"
+}
