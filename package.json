@@ -4,7 +4,7 @@
   "description": "Just Linked List Example",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/psenger/linked-list/issues"
   },
-  "homepage": "https://github.com/psenger/linked-list#readme"
+  "homepage": "https://github.com/psenger/linked-list#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "jest": "^27.0.6"
+  }
 }
