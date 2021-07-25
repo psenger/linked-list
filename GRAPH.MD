@@ -23,3 +23,10 @@ graph LR
   E-. next .->W[null]
   end
 ```
+
+## Note
+
+If you are unable to view these graphs in the browser, you can install the
+[github-mermaid-extension Browser Extension](https://github.com/BackMarket/github-mermaid-extension).
+These graphs written in [Mermaid JS](https://mermaid-js.github.io/mermaid/#/) alternatively
+simply copy and paste them into this online [Mermaid Live Editor](https://mermaid-js.github.io/mermaid-live-editor/edit)
