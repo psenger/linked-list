@@ -15,22 +15,22 @@ describe('All',() => {
             });
             test('clear should work on empty linkedList',()=>{
                 const tempLinkedList = new LinkedList();
-                expect( tempLinkedList.size ).toEqual( 0 );
+                expect( tempLinkedList.length ).toEqual( 0 );
                 tempLinkedList.clear();
-                expect( tempLinkedList.size ).toEqual( 0 );
+                expect( tempLinkedList.length ).toEqual( 0 );
             });
         })
-        describe('#size', ()=>{
+        describe('#length', ()=>{
             test('Size should return the original value',()=>{
-                expect( (new LinkedList()).size ).toEqual( 0 )
+                expect( (new LinkedList()).length ).toEqual( 0 )
             });
-            test('Size should return a modified size',()=>{
+            test('Size should return a modified length',()=>{
                 expect(linkedList.size).toEqual(3)
                 linkedList.setHead('A')
                 linkedList.setTail('E')
                 expect(linkedList.size).toEqual(5)
             });
-            test('Size should return a cleared size',()=>{
+            test('Size should return a cleared length',()=>{
                 expect(linkedList.size).toEqual(3)
                 linkedList.clear()
                 expect(linkedList.size).toEqual(0)
@@ -39,7 +39,7 @@ describe('All',() => {
         describe('@iterator',()=>{
             test('Should not fail or iterate on empty',()=>{
                 const tempLinkedList = new LinkedList();
-                expect(tempLinkedList.size).toEqual(0)
+                expect(tempLinkedList.length).toEqual(0)
                 let iterated = false
                 for (let node of tempLinkedList) {
                     iterated = true;

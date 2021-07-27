@@ -1,23 +1,61 @@
 {
-  "name": "linked-list",
+  "name": "@psenger/linked-list",
   "version": "1.0.0",
-  "description": "Just Linked List Example",
+  "description": "Linked List for NodeJS",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage --verbose src",
+    "test:cover": "jest src --coverage",
+    "test:lint": "eslint src",
+    "test:updatesnapshot": "jest --updateSnapshot",
+    "build": "rollup --config && npm run docs",
+    "prebuild": "npm run clean",
+    "clean": "rimraf coverage dist",
+    "docs": "npm run docs:readme && npm run docs:html",
+    "docs:readme": "node build-readme.js",
+    "docs:html": "documentation build src -f html --github -o docs",
+    "precommit": "npm test:lint && npm test",
+    "preversion": "npm test",
+    "version": "npm run build && git add -A dist && auto-changelog -p && git add CHANGELOG.md",
+    "postversion": "git push && git push --tags && rm -rf build/temp"
   },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=15"
+  },
+  "directories": {
+    "example": "example"
+  },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/psenger/linked-list.git"
   },
   "author": "Philip A Senger <philip.a.senger@cngrgroup.com>",
-  "license": "ISC",
+  "license": "MIT",
+  "keywords": [
+    "linked list",
+    "linkedlist",
+    "linked-list",
+    "double linked list",
+    "doublelinkedlist",
+    "double-linked-list",
+    "adt"
+  ],
   "bugs": {
     "url": "https://github.com/psenger/linked-list/issues"
   },
   "homepage": "https://github.com/psenger/linked-list#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.1",
     "@types/jest": "^26.0.24",
-    "jest": "^27.0.6"
+    "auto-changelog": "^2.3.0",
+    "documentation": "^13.2.5",
+    "eslint": "^7.31.0",
+    "jest": "^27.0.6",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.53.3"
   }
 }
