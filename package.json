@@ -34,6 +34,9 @@
     "type": "git",
     "url": "git+https://github.com/psenger/linked-list.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "author": "Philip A Senger <philip.a.senger@cngrgroup.com>",
   "license": "MIT",
   "keywords": [
