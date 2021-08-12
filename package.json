@@ -59,5 +59,8 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.53.3",
     "standard": "^16.0.3"
+  },
+  "dependencies": {
+    "@psenger/markdown-fences": "^1.0.1"
   }
 }
