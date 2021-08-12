@@ -22,61 +22,59 @@
  * @param {Node|null}[props.prev=null] - the previous node, or null
  */
 class Node {
-
-  constructor(props) {
-    this._data = props?.data || null;
-    this._next = props?.next || null;
-    this._prev = props?.prev || null;
+  constructor (props) {
+    this._data = props?.data || null
+    this._next = props?.next || null
+    this._prev = props?.prev || null
   }
 
   /**
    * Get the data from this node, which can be what ever you want.
    * @return {*|null} the data stored here.
    */
-  getData() {
-    return this._data;
+  getData () {
+    return this._data
   }
 
   /**
    * Set the data in this node.
    * @param {*|null} data - the data to store.
    */
-  setData(data) {
-    this._data = data;
+  setData (data) {
+    this._data = data
   }
 
   /**
    * Get the next node, null indicates that it is the end.
    * @return {Node|null} the next node.
    */
-  getNext() {
-    return this._next;
+  getNext () {
+    return this._next
   }
 
   /**
    * Set the next node, null indicates the end.
    * @param {Node|null} node - the next node.
    */
-  setNext(node) {
-    this._next = node;
+  setNext (node) {
+    this._next = node
   }
 
   /**
    * Get the previous node. The value null indicate the end has been reached.
    * @return {Node|null} the previous node.
    */
-  getPrev() {
-    return this._prev;
+  getPrev () {
+    return this._prev
   }
 
   /**
    * Set the previous node, null indicates the end.
    * @param {Node|null} node - the previous node.
    */
-  setPrev(node) {
-    this._prev = node;
+  setPrev (node) {
+    this._prev = node
   }
-
 }
 
 module.exports = Node

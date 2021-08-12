@@ -5,16 +5,15 @@
   "main": "dist/index.js",
   "source": "src/com/cngr/linkedlist/index.js",
   "scripts": {
+    "ci": "npm install --verbose && jest --ci --coverage && codecov",
     "test": "jest --coverage --verbose src",
     "test:cover": "jest src --coverage",
-    "test:lint": "eslint src",
-    "test:updatesnapshot": "jest --updateSnapshot",
+    "test:lint": "standard --env jest \"src/com/cngr/linkedlist/*.js\"",
+    "test:updatesnapshot": "jest --updateSnapshot src",
     "build": "rollup --config && npm run docs",
     "prebuild": "npm run clean",
     "clean": "rimraf coverage dist",
-    "docs": "npm run docs:readme && npm run docs:html",
-    "docs:readme": "node build-readme.js",
-    "docs:html": "documentation build src -f html --github -o docs",
+    "docs": "node build-readme.js",
     "precommit": "npm test:lint && npm test",
     "preversion": "npm test",
     "version": "npm run build && git add -A dist && auto-changelog -p && git add CHANGELOG.md",
@@ -34,9 +33,7 @@
     "type": "git",
     "url": "git+https://github.com/psenger/linked-list.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
+  "private": false,
   "author": "Philip A Senger <philip.a.senger@cngrgroup.com>",
   "license": "MIT",
   "keywords": [
@@ -60,6 +57,10 @@
     "eslint": "^7.31.0",
     "jest": "^27.0.6",
     "rimraf": "^3.0.2",
-    "rollup": "^2.53.3"
+    "rollup": "^2.53.3",
+    "standard": "^16.0.3"
+  },
+  "dependencies": {
+    "@psenger/markdown-fences": "^1.0.1"
   }
 }
