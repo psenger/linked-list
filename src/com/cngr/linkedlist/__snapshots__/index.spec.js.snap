@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Suite LinkedList #find Callback should execute on all nodes 1`] = `
+Array [
+  2,
+  4,
+]
+`;
+
+exports[`Test Suite LinkedList #find Callback should stop after the first passing value 1`] = `
+Array [
+  2,
+]
+`;

@@ -1,8 +1,8 @@
-const Node = require("./Node");
+const Node = require('./Node')
 
-const isNill = (value) => value === null || value === undefined;
+const isNill = (value) => value === null || value === undefined
 const not = (fn) => (...args) => !fn(...args)
-const isSet = not(isNill);
+const isSet = not(isNill)
 
 /**
  * Linked List - Constructed with either a Data Object ( which will be wrapped with a Node ) or a
@@ -12,28 +12,27 @@ const isSet = not(isNill);
  * @param {Node|Object|undefined|null} [data=null] - Node, an Object as the data, undefined or null.
  */
 class LinkedList {
-
-  constructor(data) {
-    this._head = null;
-    this._tail = null;
-    let newNode = null;
+  constructor (data) {
+    this._head = null
+    this._tail = null
+    let newNode = null
     if (isSet(data) && data instanceof Node) {
-      newNode = data;
+      newNode = data
     } else if (isSet(data)) {
-      newNode = new Node({data, next: this._head, prev: null});
+      newNode = new Node({ data, next: this._head, prev: null })
     }
     this._head = newNode
     this._tail = newNode
-    this._head?.next?.(this._tail);
-    this._tail?.prev?.(this._head);
+    this._head?.next?.(this._tail)
+    this._tail?.prev?.(this._head)
   }
 
   /**
    * Clear all out the values. Resetting the Linked List.
    */
-  clear() {
-    this._head = null;
-    this._tail = null;
+  clear () {
+    this._head = null
+    this._tail = null
   }
 
   /**
@@ -43,14 +42,14 @@ class LinkedList {
    * expensive to execute if the list is large.
    * @return {number} the length
    */
-  get length() {
-    let count = 0;
-    let node = this._head;
+  get length () {
+    let count = 0
+    let node = this._head
     while (isSet(node)) {
-      count++;
+      count++
       node = node.getNext()
     }
-    return count;
+    return count
   }
 
   /**
@@ -60,24 +59,24 @@ class LinkedList {
    * will result in clearing the entire linked list.
    * @param {Object|Node|null|undefined} newHead - the new head, supporting either a Node, or data.
    */
-  setHead(newHead) {
+  setHead (newHead) {
     if (isSet(newHead) && newHead instanceof Node) {
-      newHead.setNext(this._head);
-      newHead.setPrev(null);
-      this._head?.setPrev(newHead);
-      this._head = newHead;
+      newHead.setNext(this._head)
+      newHead.setPrev(null)
+      this._head?.setPrev(newHead)
+      this._head = newHead
       if (isNill(this._tail)) {
-        this._tail = newHead;
+        this._tail = newHead
       }
     } else if (isSet(newHead)) {
-      const nn = new Node({data: newHead, next: this._head, prev: null});
-      this._head?.setPrev(nn);
-      this._head = nn;
+      const nn = new Node({ data: newHead, next: this._head, prev: null })
+      this._head?.setPrev(nn)
+      this._head = nn
       if (isNill(this._tail)) {
-        this._tail = nn;
+        this._tail = nn
       }
     } else {
-      this.clear();
+      this.clear()
     }
   }
 
@@ -85,8 +84,8 @@ class LinkedList {
    * Get the Head of this Linked List.
    * @return {null|Node} - The head, or null.
    */
-  getHead() {
-    return this._head;
+  getHead () {
+    return this._head
   }
 
   /**
@@ -96,24 +95,24 @@ class LinkedList {
    * will result in clearing the entire linked list.
    * @param {Object|Node|null|undefined} newTail - the new tail, supporting either a Node, or data.
    */
-  setTail(newTail) {
+  setTail (newTail) {
     if (isSet(newTail) && newTail instanceof Node) {
-      newTail.setNext(null);
-      newTail.setPrev(this._tail);
-      this._tail?.setNext(newTail);
-      this._tail = newTail;
+      newTail.setNext(null)
+      newTail.setPrev(this._tail)
+      this._tail?.setNext(newTail)
+      this._tail = newTail
       if (isNill(this._head)) {
-        this._head = newTail;
+        this._head = newTail
       }
     } else if (isSet(newTail)) {
-      const nn = new Node({data: newTail, next: null, prev: this._tail});
-      this._tail?.setNext(nn);
-      this._tail = nn;
+      const nn = new Node({ data: newTail, next: null, prev: this._tail })
+      this._tail?.setNext(nn)
+      this._tail = nn
       if (isNill(this._head)) {
-        this._head = nn;
+        this._head = nn
       }
     } else {
-      this.clear();
+      this.clear()
     }
   }
 
@@ -121,8 +120,8 @@ class LinkedList {
    * get the Tail of this Linked List
    * @return {null|Node} - The tail, or null.
    */
-  getTail() {
-    return this._tail;
+  getTail () {
+    return this._tail
   }
 
   /**
@@ -147,9 +146,9 @@ class LinkedList {
    * > length = 3
    * > length = 0
    */
-  prepend(data) {
-    this.setHead(data);
-    return this;
+  prepend (data) {
+    this.setHead(data)
+    return this
   }
 
   /**
@@ -158,11 +157,11 @@ class LinkedList {
    * @return {LinkedList} A reference to this object allowing chaining.
    * @example
    */
-  prependAll(values) {
-    for (let value of values || []) {
+  prependAll (values) {
+    for (const value of values || []) {
       this.prepend(value)
     }
-    return this;
+    return this
   }
 
   /**
@@ -186,9 +185,9 @@ class LinkedList {
    * > length = 3
    * > length = 0
    */
-  append(data) {
-    this.setTail(data);
-    return this;
+  append (data) {
+    this.setTail(data)
+    return this
   }
 
   /**
@@ -214,11 +213,11 @@ class LinkedList {
    * > B
    * > C
    */
-  appendAll(values) {
-    for (let value of values || []) {
+  appendAll (values) {
+    for (const value of values || []) {
       this.append(value)
     }
-    return this;
+    return this
   }
 
   /**
@@ -240,20 +239,20 @@ class LinkedList {
    * console.log(y);
    * > [ 2, 4 ]
    */
-  get forward() {
-    const self = this;
+  get forward () {
+    const self = this
     return {
       name: 'forward',
-      [Symbol.iterator]() {
+      [Symbol.iterator] () {
         return {
           current: self._head,
-          next() {
+          next () {
             if (this.current === null) {
-              return {done: true}
+              return { done: true }
             }
-            let value = this.current;
-            this.current = this.current.getNext();
-            return {done: false, value}
+            const value = this.current
+            this.current = this.current.getNext()
+            return { done: false, value }
           }
         }
       }
@@ -279,20 +278,20 @@ class LinkedList {
    * console.log(y);
    * > [ 4, 2 ]
    */
-  get reverse() {
-    const self = this;
+  get reverse () {
+    const self = this
     return {
       name: 'reverse',
-      [Symbol.iterator]() {
+      [Symbol.iterator] () {
         return {
           current: self._tail,
-          next() {
+          next () {
             if (this.current === null) {
-              return {done: true}
+              return { done: true }
             }
-            let value = this.current;
-            this.current = this.current.getPrev();
-            return {done: false, value}
+            const value = this.current
+            this.current = this.current.getPrev()
+            return { done: false, value }
           }
         }
       }
@@ -350,40 +349,40 @@ class LinkedList {
    * // B
    * // A
    */
-  find(predicate,options = {iterator:this.forward, once: true}) {
+  find (predicate, options = { iterator: this.forward, once: true }) {
     // noinspection EqualityComparisonWithCoercionJS
-    const isReverse = (options) => options?.iterator?.name === 'reverse';
+    const isReverse = (options) => options?.iterator?.name === 'reverse'
     // console.log('isReverse=', options?.iterator == this.reverse );
     // console.log('isForward=', options?.iterator == this.forward );
-    const iterator = isReverse(options) ? this.reverse : this.forward;
-    let previousNode = isReverse(options) ? this._tail : this._head;
-    let currentNode = isReverse(options) ? this._tail : this._head;
-    let nextNode = isReverse(options) ? this._tail : this._head;
+    const iterator = isReverse(options) ? this.reverse : this.forward
+    let previousNode = isReverse(options) ? this._tail : this._head
+    // let currentNode = isReverse(options) ? this._tail : this._head
+    let nextNode = isReverse(options) ? this._tail : this._head
 
-    let iteration = 0;
-    const refs = [];
-    let hitCount = 0;
-    for ( let node of iterator ) {
-      if ( predicate(currentNode,previousNode,nextNode,iteration++,hitCount,this) ) {
-        hitCount++;
-        refs.push({previousNode,currentNode,nextNode});
+    let iteration = 0
+    const refs = []
+    let hitCount = 0
+    let currentNode
+    for (currentNode of iterator) {
+      if (predicate(currentNode, previousNode, nextNode, iteration++, hitCount, this)) {
+        hitCount++
+        refs.push({ previousNode, currentNode, nextNode })
       }
-      if ( options?.once && hitCount !== 0 ) {
-        return refs;
+      if (options?.once && hitCount !== 0) {
+        return refs
       }
-      if ( isReverse(options) ) {
-        previousNode = currentNode;
-        currentNode = currentNode?.getPrev();
-        nextNode = currentNode?.getPrev();
-      } else{
-        previousNode = currentNode;
-        currentNode = currentNode?.getNext();
-        nextNode = currentNode?.getNext();
+      if (isReverse(options)) {
+        previousNode = currentNode
+        currentNode = currentNode?.getPrev()
+        nextNode = currentNode?.getPrev()
+      } else {
+        previousNode = currentNode
+        currentNode = currentNode?.getNext()
+        nextNode = currentNode?.getNext()
       }
     }
     return refs
   }
-
 }
 
 /**
